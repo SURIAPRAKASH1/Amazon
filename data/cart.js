@@ -15,7 +15,7 @@ if (!cart){
 
 
 
-function savetoStorage() {
+export function savetoStorage() {
     localStorage.setItem('cart',JSON.stringify(cart));
 };
 
@@ -37,7 +37,7 @@ export function addToCart(productId){
         cart.push({
             productId : productId,
             quantity:1,
-            deleviryOption:'1'
+            deleviryOptionId:'1'
         })
     }
   
@@ -67,5 +67,5 @@ export function addToCart(productId){
     });
     matchingItem.deleviryOptionId = deleviryOptionId;
 
-    savetoStorage();
+    
   }

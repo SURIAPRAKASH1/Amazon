@@ -1,16 +1,13 @@
-import {cart,removeFromCart,updateDeliveryOption} from '../../data/cart.js';
+import {cart,removeFromCart,updateDeliveryOption,savetoStorage} from '../../data/cart.js';
 import { products } from '../../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deleviryOptions} from '../../data/deleviryOptions.js';
 
 
-const today = dayjs();
-const deliveryDate = today.add(7,'days');
-console.log(deliveryDate.format('dddd, MMMM , D'));
-
 export function renderOrderSummary() {
 
         let cartSummaryHtml = '';
+
 
         cart.forEach((cartItem) => {
 
@@ -33,17 +30,19 @@ export function renderOrderSummary() {
                 deleviryOption = option
             }
         });
+
         const today =dayjs();
         const deleviryDate = today.add(deleviryOption.deleviryDate ,'days');
 
-        const dateString = deleviryDate.format('dddd, MMMM , D');
+        const dateString = deleviryDate.format('dddd, MMMM, D');
 
+       
         cartSummaryHtml +=
             `  
 
         <div class="cart-item-container js-cart-item-container-${matchingPoduct.id}">
         <div class="delivery-date">
-            Delivery date: ${dateString}
+        Delivery date: ${dateString}
         </div>
 
         <div class="cart-item-details-grid">
@@ -84,42 +83,46 @@ export function renderOrderSummary() {
 
         });
 
+        
         function deliveryOptionsHtml(matchingPoduct,cartItem){
-        let html = '';
-        deleviryOptions.forEach((deleviryOption) => {
-            const today =dayjs();
-            const deleviryDate = today.add(deleviryOption.deleviryDate ,'days');
-
-            const dateString = deleviryDate.format('dddd, MMMM , D');
-
-            const priceString = deleviryOption.priceCents === 0
-            ?'FREE'
-            :   `₹${deleviryOption.priceCents} - :`
-
-            const isChecked = deleviryOption.id === cartItem.deleviryOptionId;
-
-            html +=
-            `
-        <div class="delivery-option js-deleviry-option" data-product-id = "${matchingPoduct.id}"
-        data-deleviry-option-id = "${deleviryOption.id}">
-            <input type="radio"
-            ${isChecked ?'checked' : ''}
-            class="delivery-option-input"
-            name="delivery-option-${matchingPoduct.id}">
-            <div>
-            <div class="delivery-option-date">
-                ${dateString}
+            let html = '';
+            deleviryOptions.forEach((deleviryOption) => {
+                const today =dayjs();
+                const deleviryDate = today.add(deleviryOption.deleviryDate ,'days');
+    
+                const dateString = deleviryDate.format('dddd, MMMM D');
+    
+                const priceString = deleviryOption.priceCents === 0
+                ?'FREE'
+                :   `₹${deleviryOption.priceCents} - :`
+    
+                const isChecked = deleviryOption.id === cartItem.deleviryOptionId;
+    
+                html +=
+                `
+            <div class="delivery-option js-deleviry-option" data-product-id = "${matchingPoduct.id}"
+            data-deleviry-option-id = "${deleviryOption.id}">
+                <input type="radio"
+                ${isChecked ?'checked' : ''}
+                class="delivery-option-input"
+                name="delivery-option-${matchingPoduct.id}">
+                <div>
+                <div class="delivery-option-date">
+                    ${dateString}
+                </div>
+                <div class="delivery-option-price">
+                ${priceString} - Shipping
+                </div>
+                </div>
             </div>
-            <div class="delivery-option-price">
-            ${priceString} - Shipping
-            </div>
-            </div>
-        </div>
-            `
+                `
+    
+            });
+            return html
+            };
 
-        });
-        return html
-        };
+       
+
 
 
         document.querySelector('.js-order-summary').innerHTML = cartSummaryHtml;
@@ -144,5 +147,5 @@ export function renderOrderSummary() {
         });
         });
     };
-
+    
     
