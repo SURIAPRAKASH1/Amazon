@@ -2,6 +2,7 @@ import {cart,removeFromCart,updateDeliveryOption,savetoStorage} from '../../data
 import { products,getProduct } from '../../data/products.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deleviryOptions,getDeleviryOption} from '../../data/deleviryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 export function renderOrderSummary() {
@@ -99,7 +100,7 @@ export function renderOrderSummary() {
                     ${dateString}
                 </div>
                 <div class="delivery-option-price">
-                ${priceString} - Shipping
+                ${priceString} Shipping
                 </div>
                 </div>
             </div>
@@ -124,6 +125,8 @@ export function renderOrderSummary() {
 
             container.remove();
 
+            renderPaymentSummary();
+
         })
         });
 
@@ -132,6 +135,7 @@ export function renderOrderSummary() {
         const {productId,deleviryOptionId} =element.dataset;
         updateDeliveryOption(productId,deleviryOptionId);
         renderOrderSummary();
+        renderPaymentSummary();
         });
         });
     };
