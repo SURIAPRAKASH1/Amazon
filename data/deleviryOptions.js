@@ -11,3 +11,15 @@ export const deleviryOptions = [{
     deleviryDate:1,
     priceCents:999
 }];
+
+export function getDeleviryOption(deleviryOptionId){
+    let deleviryOption;
+
+    deleviryOptions.forEach((option) =>{
+        if (option.id === deleviryOptionId){
+            deleviryOption = option
+        }
+    });
+
+    return deleviryOption;
+};
