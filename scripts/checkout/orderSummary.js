@@ -110,6 +110,20 @@ export function renderOrderSummary() {
             return html
             };
 
+
+            function updateCartQuantity (){
+    
+                let cartQuantity = 0;
+            
+                cart.forEach((cartItem) => {
+                cartQuantity += cartItem.quantity;
+                });
+            
+                document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+            
+            };
+
+            updateCartQuantity();
        
 
 
@@ -124,6 +138,7 @@ export function renderOrderSummary() {
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
             container.remove();
+            updateCartQuantity();
 
             renderPaymentSummary();
 
@@ -139,5 +154,4 @@ export function renderOrderSummary() {
         });
         });
     };
-    
-    
+
