@@ -104,6 +104,7 @@ function allProducts(products) {
   });
 
 
+
 };
 
 allProducts(products);
@@ -112,10 +113,15 @@ allProducts(products);
 
 
 document.querySelector('.js-search-button').addEventListener('click', () => {
-  const searchResult = document.querySelector('.js-search-input-box').value.toLowerCase();
+  const searchResult = document.querySelector('.js-search-input-box').value.toLowerCase().trim();
 
   const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchResult) || product.keywords.some(keyword => keyword.toLowerCase().includes(searchResult)));
-  allProducts(filteredProducts)
+
+  if (filteredProducts.length > 0) {
+    allProducts(filteredProducts);
+  } else {
+    document.querySelector('.js-products-grid').innerHTML = `<h4>No product match to your search</h4>`
+  }
 }
 )
 
@@ -124,16 +130,16 @@ document.querySelector('.js-search-button').addEventListener('click', () => {
 document.querySelector('.js-search-input-box').addEventListener("keydown", (e) => {
 
   if (e.key === 'Enter') {
-    const inputValue = document.querySelector('.js-search-input-box').value.toLowerCase();
+    const inputValue = document.querySelector('.js-search-input-box').value.toLowerCase().trim();
 
     const filteredProducts2 = products.filter(product =>
       product.name.toLowerCase().includes(inputValue) || product.keywords.some(key => key.toLowerCase().includes(inputValue))
     );
 
-    if (filteredProducts2) {
+    if (filteredProducts2.length > 0) {
       allProducts(filteredProducts2);
     } else {
-      document.querySelector.innerHTML = `<h3>No product match your result</h3>`
+      document.querySelector('.js-products-grid').innerHTML = `<h4>No product match your search</h4>`
     }
 
   }
