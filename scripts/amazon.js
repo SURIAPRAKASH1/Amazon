@@ -121,7 +121,24 @@ document.querySelector('.js-search-button').addEventListener('click', () => {
 
 
 
+document.querySelector('.js-search-input-box').addEventListener("keydown", (e) => {
 
+  if (e.key === 'Enter') {
+    const inputValue = document.querySelector('.js-search-input-box').value.toLowerCase();
+
+    const filteredProducts2 = products.filter(product =>
+      product.name.toLowerCase().includes(inputValue) || product.keywords.some(key => key.toLowerCase().includes(inputValue))
+    );
+
+    if (filteredProducts2) {
+      allProducts(filteredProducts2);
+    } else {
+      document.querySelector.innerHTML = `<h3>No product match your result</h3>`
+    }
+
+  }
+
+})
 
 
 
