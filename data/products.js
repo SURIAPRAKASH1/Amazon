@@ -103,6 +103,18 @@ logThis();
 logThis.call('surya');
 */
 
+/*function loadProductFetch() {
+
+  fetch('https://supersimplebackend.dev/products').then((reponse) => {
+    return reponse.json()
+  }).then((data) => {
+    console.log(data)
+  })
+
+}
+
+loadProductFetch(); */
+
 
 /*export let products = [];
 
