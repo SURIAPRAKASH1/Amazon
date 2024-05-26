@@ -82,10 +82,26 @@ class Clothing extends Products {
 
 }
 
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleDateString());
+console.log(date.toLocaleTimeString());
+*/
+/*
+const object2 ={
+  a:2,
+  b:this.a
+};
+*/
 
-const tshirt = new Clothing(
+/*function logThis() {
+  console.log(this);
+}
 
-);
+logThis();
+logThis.call('surya');
+*/
 
 
 
