@@ -104,6 +104,36 @@ logThis.call('surya');
 */
 
 
+/*export let products = [];
+
+export function loadProducts() {
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Products(productDetails);
+    });
+
+    
+
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+
+};
+*/
+
+
+
+
+
+
 
 export const products = [
   {
@@ -771,4 +801,6 @@ export const products = [
   }
   return new Products(productDetails);
 });
+
+
 
