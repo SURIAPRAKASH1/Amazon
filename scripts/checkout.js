@@ -5,6 +5,7 @@ import { renderPaymentSummary } from './checkout/paymentSummary.js';
 //import '../data/cart-class.js'
 
 
+
 /*new Promise((resolve) => {
     console.log('start loading')
     const is_perfect = true
