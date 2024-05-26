@@ -37,6 +37,11 @@ class Products {
     return `₹${this.priceCents}`;
   };
 
+  extraInfoHtml() {
+    return "";
+  };
+
+
 }
 
 const product1 = new Products(
@@ -58,7 +63,29 @@ const product1 = new Products(
 );
 
 
+class Clothing extends Products {
 
+  sizeChartLink;
+
+  constructor(productDetails) {
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  };
+
+  extraInfoHtml() {
+    return `
+    <a href="${this.sizeChartLink}" target="_blank">Size Chart</a>
+    `;
+  };
+
+
+
+}
+
+
+const tshirt = new Clothing(
+
+);
 
 
 
@@ -722,6 +749,10 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Products(productDetails);
 });
 

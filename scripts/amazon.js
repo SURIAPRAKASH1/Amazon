@@ -46,6 +46,8 @@ function allProducts(products) {
               </select>
             </div>
 
+            ${product.extraInfoHtml()}
+
             <div class="product-spacer"></div>
 
             <div class="added-to-cart js-added-tick-${product.id}">
