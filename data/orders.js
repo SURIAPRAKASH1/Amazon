@@ -12,5 +12,16 @@ function saveToStorage() {
 }
 
 
+export function getOrder(orderId) {
+    let mathchingOrder;
 
+    orders.forEach((order) => {
+        if (order.id === orderId) {
+            mathchingOrder = order;
+        }
+
+    });
+
+    return mathchingOrder;
+};
 
