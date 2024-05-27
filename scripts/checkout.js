@@ -34,7 +34,7 @@ export function isCartEmpty() {
         document.querySelector('.js-order-summary').innerHTML = `
         <div class="review-to-product">
             <p>Your cart is empty</p>
-            <a href="amazon.html"><button id="review-to-product-button">View products</button></a>
+            <a href="index.html"><button id="review-to-product-button">View products</button></a>
         </div>
         `;
 
