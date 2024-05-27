@@ -166,6 +166,7 @@
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 12px;
+  
 }
 
 .payment-summary-row {
@@ -231,3 +232,27 @@ display: initial;
 .is-editing-quantity .update-quantity-link{
   display: none;
 }
+
+.review-to-product p {
+
+  font-weight: 5px;
+  font-size: 17px;
+  color: black;  
+  margin-left: 5px;
+}
+
+#review-to-product-button{
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: hsla(0, 0%, 0%, 0.945);
+  border-radius: 0.6rem;
+  background-color: hsl(51, 100%, 60%);
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+#review-to-product-button:hover{
+  background-color: hsl(51, 80%, 50%);
+
+}
+

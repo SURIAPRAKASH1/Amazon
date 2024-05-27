@@ -126,6 +126,7 @@ document.querySelector('.js-search-input-box').addEventListener("keydown", (e) =
   if (e.key === 'Enter') {
     const inputValue = document.querySelector('.js-search-input-box').value.toLowerCase().trim();
 
+
     const filteredProducts2 = products.filter(product =>
       product.name.toLowerCase().includes(inputValue) || product.keywords.some(key => key.toLowerCase().includes(inputValue))
     );
@@ -135,6 +136,7 @@ document.querySelector('.js-search-input-box').addEventListener("keydown", (e) =
     } else {
       document.querySelector('.js-products-grid').innerHTML = `<h4>No product match your search</h4>`
     }
+
 
   }
 

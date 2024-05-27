@@ -1,4 +1,4 @@
-import { cart } from '../../data/cart.js';
+import { cart, restCart } from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getDeleviryOption } from '../../data/deleviryOptions.js';
 import { addOrder } from '../../data/orders.js';
@@ -83,7 +83,7 @@ export function renderPaymentSummary() {
         } catch (error) {
             console.log('Unexpected Error Try again later', error)
         };
-
+        restCart();
         window.location.href = 'orders.html';
 
     }) : null;

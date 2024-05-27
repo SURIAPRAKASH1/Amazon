@@ -86,3 +86,8 @@ export function updateQuantity(productId, newQuantity) {
     savetoStorage();
 
 }
+
+export function restCart() {
+    cart = [];
+    savetoStorage();
+}
