@@ -66,7 +66,7 @@ export function renderPaymentSummary() {
     `;
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHtml;
 
-    document.querySelector('.js-place-order').addEventListener('click', async () => {
+    cart.length > 0 ? document.querySelector('.js-place-order').addEventListener('click', async () => {
         try {
             const response = await fetch('https://supersimplebackend.dev/orders', {
                 method: 'POST',
@@ -86,6 +86,6 @@ export function renderPaymentSummary() {
 
         window.location.href = 'orders.html';
 
-    })
+    }) : null;
 
 }

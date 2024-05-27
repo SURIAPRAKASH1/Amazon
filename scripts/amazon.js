@@ -3,6 +3,7 @@ import { products } from '../data/products.js';
 import updateCartQuantity from './update-cart.js';
 
 
+
 function allProducts(products) {
 
   let productHtml = '';
